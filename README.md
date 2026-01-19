@@ -8,7 +8,8 @@ A lightweight React hook for handling form submissions with advanced form data p
 - 🎯 **TypeScript Support** - Fully typed with generic support
 - 🔧 **Nested Objects** - Parse nested form data with dot notation (`user.name`)
 - 📋 **Array Support** - Handle arrays with indexed notation (`items[0]`)
-- 📦 **Lightweight** - Zero dependencies (except React)
+- �️ **Automatic Prevention** - Prevents default form submission behavior by default
+- �📦 **Lightweight** - Zero dependencies (except React)
 - 🎨 **Framework Agnostic** - Works with any form structure
 
 ## Installation
