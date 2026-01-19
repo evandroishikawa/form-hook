@@ -1,4 +1,4 @@
-# @eji/form-hook
+# rfhook
 
 A lightweight React hook for handling form submissions with advanced form data parsing capabilities. Supports nested objects, arrays, and dot notation for complex form structures.
 
@@ -14,22 +14,22 @@ A lightweight React hook for handling form submissions with advanced form data p
 ## Installation
 
 ```bash
-npm install @eji/form-hook
+npm install rfhook
 ```
 
 ```bash
-pnpm add @eji/form-hook
+pnpm add rfhook
 ```
 
 ```bash
-yarn add @eji/form-hook
+yarn add rfhook
 ```
 
 ## Quick Start
 
 ```tsx
 import React from 'react';
-import { useForm } from '@eji/form-hook';
+import { useForm } from 'rfhook';
 
 interface FormData {
   email: string;
@@ -169,7 +169,7 @@ The `parseFormData` utility converts FormData into structured objects using thes
 ### Contact Form
 
 ```tsx
-import { useForm } from '@eji/form-hook';
+import { useForm } from 'rfhook';
 
 interface ContactData {
   name: string;
