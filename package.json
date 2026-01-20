@@ -4,6 +4,10 @@
   "description": "",
   "main": "dist/index.cjs",
   "module": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evandroishikawa/rfhook.git"
+  },
   "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
