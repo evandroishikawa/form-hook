@@ -25,8 +25,8 @@ interface UseFormReturn<T> {
   ref: React.RefObject<HTMLFormElement | null>
   /** Form submission handler - prevents default and calls submit with parsed data */
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void
-  /** Resets the form to its initial state or initial data if provided */
-  reset: () => void
+  /** Resets the form and optionally sets it to provided data or initial data */
+  reset: (data?: T, shouldUseInitialData?: boolean) => void
   /** Gets current form data without triggering submission */
   getFormData: () => T | null
   /** Sets the value of a specific form field by name */
@@ -36,13 +36,14 @@ interface UseFormReturn<T> {
 }
 
 /**
- * A React hook for handling form state and submission
+ * A React hook for handling form state and submission with initialization support
  *
  * @template T - The expected shape of the parsed form data
  * @param options - Configuration options for the form
  * @returns Object containing form ref, handlers, and utility functions
  *
  * @example
+ * Basic usage:
  * ```typescript
  * interface LoginData {
  *   email: string;
@@ -60,6 +61,39 @@ interface UseFormReturn<T> {
  *     <button type="submit">Login</button>
  *   </form>
  * );
+ * ```
+ *
+ * @example
+ * With initial data:
+ * ```typescript
+ * const form = useForm<LoginData>({
+ *   submit: (data) => console.log(data),
+ *   initialData: { email: 'user@example.com', password: '' }
+ * });
+ *
+ * // Initialize form with initial data on mount
+ * useEffect(() => {
+ *   form.initialize();
+ * }, []);
+ * ```
+ *
+ * @example
+ * Dynamic initialization:
+ * ```typescript
+ * const form = useForm<UserData>({
+ *   submit: (data) => saveUser(data)
+ * });
+ *
+ * // Load and set user data from API
+ * const loadUser = async (userId: string) => {
+ *   const userData = await fetchUser(userId);
+ *   form.initialize(userData);
+ * };
+ *
+ * // Reset to specific data
+ * const resetToDefaults = () => {
+ *   form.reset({ name: '', email: '', age: '' });
+ * };
  * ```
  */
 export function useForm<T = Record<string, unknown>>({
